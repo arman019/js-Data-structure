@@ -1,4 +1,4 @@
-class LinkedList {
+const LinkedList = class LinkedList {
     constructor() {
         this.head = null
         this.tail = null
@@ -44,30 +44,30 @@ class LinkedList {
         }
     }
 
-    insertAfter(value, afterValue){
+    insertAfter(value, afterValue) {
         const val = this.find(afterValue)
 
-        if(val){
+        if (val) {
             let checkNext = val.next
-            let newNode = {value:value,next:checkNext}
+            let newNode = { value: value, next: checkNext }
             val.next = newNode
         }
 
-        else{
+        else {
             return null
         }
 
     }
 
     find(value) {
-        if(this.head === null){
+        if (this.head === null) {
             return null
         }
 
-        let currNode =this.head
+        let currNode = this.head
 
-        while(currNode){
-            if(currNode.value === value){
+        while (currNode) {
+            if (currNode.value === value) {
                 return currNode
             }
             currNode = currNode.next
@@ -101,15 +101,31 @@ class LinkedList {
             this.tail = currNode
         }
 
-      
 
+    }
+
+    deleteHead(){
+        if(this.head === null){
+            return null
+        }
+        const deletedItem = this.head
+
+        if(this.head.next){
+            this.head = this.head.next
+        }
+        else{
+            this.head = null
+            this.tail = null
+        }
+
+        return deletedItem
     }
 
     arrayForm() {
         let listArr = []
         let startNode = this.head
         while (startNode) {
-            listArr.push(startNode)
+            listArr.push(startNode.value)
             startNode = startNode.next
         }
 
@@ -117,15 +133,11 @@ class LinkedList {
     }
 
 
-
-
-
-
 }
 
 
 
-const list = new LinkedList()
+/* const list = new LinkedList()
 list.append('Omegalul')
 list.append(6)
 list.append(8)
@@ -137,9 +149,11 @@ list.append(5)
 list.deleteValue(5)
 
 // console.log(list.arrayForm())
-/* 
+
 console.log(list.find('hello there'))
-console.log(list.find('Max')) */
+console.log(list.find('Max')) 
 
 list.insertAfter(11,'hello there')
-console.log(list.arrayForm())
+console.log(list.arrayForm()) */
+
+module.exports = LinkedList
