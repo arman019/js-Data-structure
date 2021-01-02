@@ -137,7 +137,7 @@ class HashTableTutorial {
         const bucketArray = this.buckets[keyHash];
         const storedElement = bucketArray.find(element => {
             if (element.key === key) {
-                return element.val
+                return element
             }
         });
 
