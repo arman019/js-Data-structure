@@ -18,7 +18,7 @@ class Node {
         }
 
         const exsistChild = this.children.find((child) => {
-            return child.node === segment[0]
+            return child.value === segment[0]
         })
         if (exsistChild) {
             exsistChild.addNode(segment.slice(1).join('/'))
@@ -67,6 +67,8 @@ class Node {
 
     }
 
+    
+
 
 }
 
@@ -90,13 +92,14 @@ class Tree {
 
 const fileSystem = new Tree('/')
 fileSystem.add("documents/task/Text.txt")
-fileSystem.add("documents/documents/code.exe")
+fileSystem.add("documents")
+fileSystem.add("Roll/documents/code.exe")
 /* fileSystem.add("documents/documents/code.exe")
 fileSystem.add("documents/documents/cll.exe") */
 /* fileSystem.add("documents/documents/code.exe")
 fileSystem.add("documents/documents/code.exe/bin.jar") */
 // fileSystem.remove("documents/documents/code.exe/bin.jar") 
-fileSystem.remove("documents/task/Text.txt")
+fileSystem.remove("documents")
 
 
 //console.log(fileSystem.add("documents/documents/Text.txt"))
