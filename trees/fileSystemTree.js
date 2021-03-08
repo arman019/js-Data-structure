@@ -67,7 +67,22 @@ class Node {
 
     }
 
-    
+    findNode(value) {
+         console.log(this)
+       
+        //console.log('1')
+        for (const child of this.children) {
+            if(child.value === value){
+                 return child
+            }
+            const nestedChildNode = child.findNode(value);
+            if (nestedChildNode) {
+                return nestedChildNode;
+            }
+        }
+    }
+
+
 
 
 }
@@ -86,6 +101,16 @@ class Tree {
         //console.log(this.root.removeNode(path))
     }
 
+    find(value) {
+        if (this.root.value === value) {
+            return this.root
+        }
+        // console.log('here')
+        return this.root.findNode(value)
+    }
+
+
+
 
 
 }
@@ -99,8 +124,11 @@ fileSystem.add("documents/documents/cll.exe") */
 /* fileSystem.add("documents/documents/code.exe")
 fileSystem.add("documents/documents/code.exe/bin.jar") */
 // fileSystem.remove("documents/documents/code.exe/bin.jar") 
-fileSystem.remove("documents")
 
+// fileSystem.remove("documents")
+
+
+console.log(fileSystem.find('code.exe'))
 
 //console.log(fileSystem.add("documents/documents/Text.txt"))
 console.log(fileSystem)
